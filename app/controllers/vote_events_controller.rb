@@ -3,5 +3,6 @@ class VoteEventsController < ApplicationController
   end
 
   def create
+
   end
 end
