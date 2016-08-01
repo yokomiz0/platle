@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyString
+  area: MyString
+  num_of_attends: 1
+  options: MyString
+
+two:
+  url: MyString
+  area: MyString
+  num_of_attends: 1
+  options: MyString
