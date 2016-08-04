@@ -25,10 +25,10 @@ ActiveRecord::Schema.define(version: 20160801144746) do
   create_table "vote_events", force: :cascade do |t|
     t.string   "code"
     t.string   "area"
-    t.integer  "num_of_people"
+    t.integer  "num_of_attends"
     t.string   "options"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "votes", force: :cascade do |t|

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  root 'vote_events#index'
-  get 'events/(:code)', to: 'votes#show', constraints: {code: '\w+'}, as: 'votes_show'
-  resources :vote_events, only: [:show, :create]
+  root 'vote_events#new'
+  get 'events/(:event_code)', to: 'vote_events#show', constraints: {event_code: '\w+'}
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
