@@ -3,7 +3,7 @@ class CreateVoteEvents < ActiveRecord::Migration
     create_table :vote_events do |t|
       t.string :code
       t.string :area
-      t.integer :num_of_attends
+      t.integer :num_of_people
       t.string :options
 
       t.timestamps null: false
