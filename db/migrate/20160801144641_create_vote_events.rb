@@ -3,9 +3,9 @@ class CreateVoteEvents < ActiveRecord::Migration
     create_table :vote_events do |t|
       t.string :code
       t.string :area
-      t.integer :num_of_attends
-      t.string :options
-
+      t.integer :num_of_people
+      t.string :options # "1,2,3"
+      t.integer :max_vote, default: 5
       t.timestamps null: false
     end
   end

@@ -1,8 +1,9 @@
 class CreateShops < ActiveRecord::Migration
   def change
     create_table :shops do |t|
+      t.string :name
       t.string :address
-      t.string :shop_code
+      t.string :code
       t.string :image
       t.string :url
 
