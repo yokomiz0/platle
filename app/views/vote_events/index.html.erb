@@ -12,6 +12,7 @@
 <%= form_for @vote_event do |f| %>
   <%= f.hidden_field :area %>
   <%= f.hidden_field :num_of_people %>
+  <%= f.hidden_field :options, value: @shops.map{|s| s['id']}.join(',') %>
   <dl>
   <% @shops.each do |shop| %>
     <dt><%= shop['name'] %></dt>
