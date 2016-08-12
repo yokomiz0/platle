@@ -14,8 +14,9 @@
 ActiveRecord::Schema.define(version: 20160801144746) do
 
   create_table "shops", force: :cascade do |t|
+    t.string   "name"
     t.string   "address"
-    t.string   "shop_code"
+    t.string   "code"
     t.string   "image"
     t.string   "url"
     t.datetime "created_at", null: false
@@ -25,16 +26,18 @@ ActiveRecord::Schema.define(version: 20160801144746) do
   create_table "vote_events", force: :cascade do |t|
     t.string   "code"
     t.string   "area"
-    t.integer  "num_of_attends"
+    t.integer  "num_of_people"
     t.string   "options"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "max_vote",      default: 5
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "votes", force: :cascade do |t|
     t.integer  "vote_event_id"
+    t.string   "code"
     t.string   "user_id"
-    t.integer  "shop_id"
+    t.string   "shop"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
