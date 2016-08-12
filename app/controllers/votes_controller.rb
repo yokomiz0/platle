@@ -2,14 +2,16 @@ class VotesController < ApplicationController
 
   def show
     code = params[:code] # 87293749273aosf87234ja983
-    ve = VoteEvent.where(:code => code)
-
+    ve = VoteEvent.find_by(:code => code)
     # 投票イベントが存在するか？
-    unless ve.present?
-      # 404エラー
-    end
-
+    raise ActiveRecord::RecordNotFound unless ve.present?
+    
+    # 最大投票数チェック
+    
     # クッキーをみて 投票権利があるか?
+    
+    @vote = Vote.new({code: code})
+    @options = ve.options.split(',')
   end
 
   def vote
@@ -22,4 +24,11 @@ class VotesController < ApplicationController
 
   def finish
   end
+  
+  private 
+  
+  def vote_params
+    #params.require(:vote).permit(:code, :shop)
+  end
 end
+

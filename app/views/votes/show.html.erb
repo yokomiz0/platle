@@ -1,0 +1,10 @@
+votes#show
+
+<%= form_for @vote do |f| %>
+    <%= f.hidden_field :code %>
+    <% @options.each do |opt| %>
+    <label><%= f.radio_button :shop, opt %> shop</label>
+    <% end %>
+    <%= f.submit '投票' %>
+<% end %>
+
