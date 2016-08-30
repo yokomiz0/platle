@@ -1,10 +1,14 @@
 votes#show
 
-<%= form_for @vote do |f| %>
-<%= f.hidden_field :code %>
-<% @options.each do |opt| %>
-    <label><%= f.radio_button :shop, opt %> shop</label>
-<% end %>
-<%= f.submit '投票' %>
-<% end %>
+<p>あと<%=  %>人 投票可能です。</p>
 
+<%= form_for @vote do |f| %>
+	<%= f.hidden_field :code %>
+	<% @shops.each do |shop| %>
+    	<label><%#= f.radio_button :shops %> shop</label>
+		<dt><%= shop['name'] %></dt>
+		<dt><%= image_tag(shop['image']) %></dt>
+		<dd>ショップ詳細URL: <%= link_to shop['url'] %></dd>
+	<% end %>
+	<%= f.submit '投票' %>
+<% end %>

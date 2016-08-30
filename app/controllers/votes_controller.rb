@@ -5,7 +5,7 @@ class VotesController < ApplicationController
     ve = VoteEvent.find_by(:code => code)
 
     # 投票イベントが存在するか？
-    raise ActiveRecord::RecordNotFound unless ve.present?
+    #raise ActiveRecord::RecordNotFound unless ve.present?
 
     # 投票受付終了済みか？
     vote_max = Vote.where(code: code).count
@@ -20,9 +20,17 @@ class VotesController < ApplicationController
       render 'voted'
       return
     end
-
+	#人数voteeventとつなげる
     @vote = Vote.new({code: code})
     @options = ve.options.split(',')
+	@shops = Shop.where(code: @options)
+	logger.debug('----------------- START ---------------')
+	@shops.each do |shop|
+		logger.debug(shop.id)
+	end
+	logger.debug('----------------- 1 ---------------')
+	logger.debug(@shops.inspect)
+	logger.debug('----------------- END ---------------')
 
     render 'show'
   end
