@@ -1,26 +1,26 @@
 <h1>VoteEvents#index</h1>
 
 <%= form_tag '/', method: 'get' do %>
-  <label for="area">場所:</label>
-  <%= text_field_tag 'area', params[:area] %>
-  <label for="num_of_people">人数:</label>
-  <%= text_field_tag 'num_of_people', params[:num_of_people] %>
-  <%= submit_tag 'お店検索' %>
+    <label for="area">場所:</label>
+    <%= text_field_tag 'area', params[:area] %>
+    <label for="num_of_people">人数:</label>
+    <%= text_field_tag 'num_of_people', params[:num_of_people] %>
+    <%= submit_tag 'お店検索' %>
 <% end %>
 
 <% if @shops.present? and @shops.any? %>
 <%= form_for @vote_event do |f| %>
-  <%= f.hidden_field :area %>
-  <%= f.hidden_field :num_of_people %>
-  <%= f.hidden_field :options, value: @shops.map{|s| s['id']}.join(',') %>
-  <dl>
-  <% @shops.each do |shop| %>
-    <dt><%= shop['name'] %></dt>
-    <dd>ショップ詳細URL: <%= link_to shop['url'], shop['url'] %></dd>
-  <% end %>
-  </dl>
-  <%= f.submit '投票イベント作成' %>
+    <%= f.hidden_field :area %>
+    <%= f.hidden_field :num_of_people %>
+    <%= f.hidden_field :options, value: @shops.map{|s| s['id']}.join(',') %>
+    <dl>
+    <% @shops.each do |shop| %>
+        <dt><%= shop['name'] %></dt>
+        <dd>ショップ詳細URL: <%= link_to shop['url'], shop['url'] %></dd>
+    <% end %>
+    </dl>
+    <%= f.submit '投票イベント作成' %>
 <% end %>
 <% elsif @error.present? %>
-  <p><%= @error %><p>
+    <p><%= @error %><p>
 <% end %>
