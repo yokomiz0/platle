@@ -1,3 +1,3 @@
 class Vote < ActiveRecord::Base
-  belongs_to :vote_event
+    belongs_to :vote_event
 end
